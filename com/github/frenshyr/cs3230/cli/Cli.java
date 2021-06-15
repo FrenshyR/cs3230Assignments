@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Collections;
 
-
 public class Cli {
     private static String getUserInput(){
         Scanner in = new Scanner(System.in);
