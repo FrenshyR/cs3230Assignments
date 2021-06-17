@@ -1,7 +1,7 @@
 package com.github.frenshyr.cs3230.cli;
 import java.util.Scanner;
 
-public class Cli {
+public class Main {
     private static String getUserInput(){
         Scanner in = new Scanner(System.in);
         System.out.println(">");
