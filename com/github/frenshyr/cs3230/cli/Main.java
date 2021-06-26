@@ -1,11 +1,7 @@
 package com.github.frenshyr.cs3230.cli;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Collections;
 
-
-public class Cli {
+public class Main {
     private static String getUserInput(){
         Scanner in = new Scanner(System.in);
         System.out.println(">");
@@ -35,50 +31,9 @@ public class Cli {
         }
         return inputedInts;
     }
-    private static Integer sum(int[] userInput){
-        int sumTotal = 0;
-        //Add all numbers from array into sumTotal
-        for(int i=0; i<userInput.length; i++){
-            sumTotal += userInput[i];
-        }
-        return sumTotal;
-    }
-    private static ArrayList<Integer> evens(int[] userInput){
-        ArrayList<Integer> evens = new ArrayList<Integer>();
-        //Find every even number
-        for(int i=0; i<userInput.length; i++){
-            if(userInput[i] % 2 == 0){
-                evens.add(userInput[i]);
-            }
-        }
-        Collections.sort(evens);
-        return evens;
-    }
-    private static ArrayList<Integer> odds(int[] userInput){
-        ArrayList<Integer> odds = new ArrayList<Integer>();
-        //Find every odd number
-        for(int i=0; i<userInput.length; i++){
-            if(userInput[i] % 2 != 0){
-                odds.add(userInput[i]);
-            }
-        }
-        Collections.sort(odds);
-        return odds;
-    }
-    private static int max(int[] userInput){
-        Arrays.sort(userInput);
-        //Return number with max value
-        return userInput[userInput.length-1];
-    }
-    private static int min(int[] userInput){
-        Arrays.sort(userInput);
-        //Return number with the min value
-        return userInput[0];
-    }
-    public static void main(String[] args) {
+    private static void startCli(){
         boolean runProgram = true;
-        System.out.println("Welcome to My CS3230 Project!");
-        //Prompt and store intengers
+        //Prompt and store integers
         int[] ints = update();
         //Run program until user decides otherwise
         while(runProgram){
@@ -98,27 +53,27 @@ public class Cli {
                 option = in.nextInt();
             }
             switch(option) {
-                //Sum of all nums
+                //Sum of all numbers
                 case 1:
-                    System.out.println("Sum: " + sum(ints));
+                    System.out.println("Sum: " + NumberOperations.sum(ints));
                     break;
-                //Get all even nums
+                //Get all even numbers
                 case 2:
-                    System.out.println("Evens: " + evens(ints));
+                    System.out.println("Evens: " + NumberOperations.evens(ints));
                     break;
-                //Get all odd nums
+                //Get all odd numbers
                 case 3:
-                    System.out.println("Odds: " + odds(ints));
+                    System.out.println("Odds: " + NumberOperations.odds(ints));
                     break;
                 //Get max num
                 case 4:
-                    System.out.println("Max: " + max(ints));
+                    System.out.println("Max: " + NumberOperations.max(ints));
                     break;
                 //Get min num
                 case 5:
-                    System.out.println("Min: " + min(ints));
+                    System.out.println("Min: " + NumberOperations.min(ints));
                     break;
-                //Update nums
+                //Update numbers
                 case 6:
                     ints = update();
                     break;
@@ -129,5 +84,9 @@ public class Cli {
                     break;
             }
         }
+    }
+    public static void main(String[] args) {
+        System.out.println("Welcome to My CS3230 Project!");
+        startCli();
     }
 }
