@@ -3,10 +3,38 @@ package com.github.frenshyr.cs3230.cli;
 import java.util.Scanner;
 
 public class Cli {
+    private static String getUserInput(){
+        Scanner in = new Scanner(System.in);
+        System.out.println(">");
+        return in.nextLine();
+    }
+    static int[] update(){
+        //Prompt user
+        System.out.println("Enter a list of integers(space separated): ");
+        //Store numbers
+        return stringArrayToIntArray(getUserInput().split("\\s+"));
+    }
+    static boolean exit(){
+        System.out.println("Good Bye!");
+        return false;
+    }
+    private static int[] stringArrayToIntArray(String[] inputString){
+        int[] inputInts = new int[inputString.length];
+        for(int i=0; i<inputString.length; i++){
+            try{
+                inputInts[i] = Integer.parseInt(inputString[i]);
+            }
+            //If users inputs anything besides an integer
+            catch(NumberFormatException ex){
+                System.out.println(inputString[i] + " is not a valid integer, try again");
+            }
+        }
+        return inputInts;
+    }
     static void startCli(){
         boolean runProgram = true;
         //Prompt and store integers
-        int[] ints = Main.update();
+        int[] ints = update();
         //Run program until user decides otherwise
         while(runProgram){
             System.out.println("Choose an Operation:");
@@ -41,11 +69,11 @@ public class Cli {
                 case 5 -> System.out.println("Min: " + NumberOperations.min(ints));
 
                 //Update numbers
-                case 6 -> ints = Main.update();
+                case 6 -> ints = update();
 
                 //Exit program
                 case 7 -> {
-                    runProgram = Main.exit();
+                    runProgram = exit();
                     in.close();
                 }
             }
