@@ -3,22 +3,27 @@ package com.github.frenshyr.cs3230;
 import java.util.Scanner;
 
 public class Cli {
-    private static String getUserInput(){
+    private static String getUserInput() {
         Scanner in = new Scanner(System.in);
         System.out.println(">");
         return in.nextLine();
     }
-    static int[] update(){
+    static int[] updateNumber() {
         //Prompt user
         System.out.println("Enter a list of integers(space separated): ");
         //Store numbers
         return stringArrayToIntArray(getUserInput().split("\\s+"));
     }
+     static String[] updateString() {
+        //Prompt user
+        System.out.println("Enter a list of words(space separated): ");
+        return getUserInput().split("\\s+");
+    }
     static boolean exit(){
         System.out.println("Good Bye!");
         return false;
     }
-    private static int[] stringArrayToIntArray(String[] inputString){
+    private static int[] stringArrayToIntArray(String[] inputString) {
         int[] inputInts = new int[inputString.length];
         for(int i=0; i<inputString.length; i++){
             try{
@@ -31,10 +36,10 @@ public class Cli {
         }
         return inputInts;
     }
-    static void startCli(){
+    static void startCliNum() {
         boolean runProgram = true;
         //Prompt and store integers
-        int[] ints = update();
+        int[] ints = updateNumber();
         //Run program until user decides otherwise
         while(runProgram){
             System.out.println("Choose an Operation:");
@@ -73,7 +78,7 @@ public class Cli {
                 //Get 5 number Summary
                 case 8 -> NumberOperations.fiveNumSummary(ints);
                 //Update numbers
-                case 9 -> ints = update();
+                case 9 -> ints = updateNumber();
                 //Exit program
                 case 10 -> {
                     runProgram = exit();
@@ -81,5 +86,11 @@ public class Cli {
                 }
             }
         }
+    }
+    static void startCliStr() {
+        boolean runProgram = true;
+        //Prompt and store words
+        String[] words = updateString();
+        StringOperations.checkListOfStrings(words);
     }
 }

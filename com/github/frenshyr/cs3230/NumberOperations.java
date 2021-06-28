@@ -11,18 +11,18 @@ public class NumberOperations {
         value = value / Math.pow(10, decimalPoint);
         return value;
     }
-    static Integer sum(int[] userInput){
+    static Integer sum(int[] userInput) {
         int sumTotal = 0;
         //Add all numbers from array into sumTotal
-        for (int i=0; i<userInput.length; i++){
+        for (int i=0; i<userInput.length; i++) {
             sumTotal += userInput[i];
         }
         return sumTotal;
     }
-    static ArrayList<Integer> evens(int[] userInput){
+    static ArrayList<Integer> evens(int[] userInput) {
         ArrayList<Integer> evens = new ArrayList<Integer>();
         //Find every even number
-        for(int i=0; i<userInput.length; i++){
+        for(int i=0; i<userInput.length; i++) {
             if(userInput[i] % 2 == 0){
                 evens.add(userInput[i]);
             }
@@ -30,7 +30,7 @@ public class NumberOperations {
         Collections.sort(evens);
         return evens;
     }
-    static ArrayList<Integer> odds(int[] userInput){
+    static ArrayList<Integer> odds(int[] userInput) {
         ArrayList<Integer> odds = new ArrayList<Integer>();
         //Find every odd number
         for(int i=0; i<userInput.length; i++){
@@ -52,6 +52,7 @@ public class NumberOperations {
         return userInput[0];
     }
     static double mean(int[] userInput){
+        //Number of elements in array
         double count = userInput.length;
         double sum = (double)sum(userInput);
         return change(sum/count, 4);
@@ -59,22 +60,23 @@ public class NumberOperations {
     static double std(int[] userInput){
         double sum = 0;
         double sumDivide = 0;
-        for (int i = 0; i < userInput.length; i++)
-        {
+        //Standard deviation equation
+        for (int i = 0; i < userInput.length; i++) {
             sum += Math.pow(((double)userInput[i] - mean(userInput)), 2);
         }
         sumDivide = sum / (double)userInput.length;
         return change(Math.sqrt(sumDivide), 4);
     }
-    static double median(int[] userInput){
+    static double median(int[] userInput) {
         double median = 0;
         Arrays.sort(userInput);
         //Execute if number of elements are even
         if (userInput.length % 2 == 0){
+            //Numbers in middle of list
             int numAtMid1 = 0;
             int numAtMid2 = 0;
             int midpoint = (userInput.length / 2) - 1;
-            for(int i=0; i<userInput.length; i++){
+            for(int i=0; i<userInput.length; i++) {
                 if(i == midpoint){
                     numAtMid1 = userInput[i];
                 }
@@ -82,12 +84,13 @@ public class NumberOperations {
                     numAtMid2 = userInput[i];
                 }
             }
+            //median equation
             median = ((double)numAtMid1 + (double)numAtMid2)/2;
         }
         //Execute if number of elements are even
         else{
-            for(int i=0; i<userInput.length; i++){
-                if((userInput.length / 2) == i){
+            for(int i=0; i<userInput.length; i++) {
+                if((userInput.length / 2) == i) {
                     median = userInput[i];
                 }
             }
@@ -97,6 +100,7 @@ public class NumberOperations {
     static double q1(int[] userInput){
         Arrays.sort(userInput);
         int midpoint = (userInput.length / 2);
+        //Grab first half of numbers
         int[] q1Arr = Arrays.copyOfRange(userInput, 0,midpoint);
         return median(q1Arr);
     }
@@ -105,11 +109,14 @@ public class NumberOperations {
         //Execute if number of elements are even
         if (userInput.length % 2 == 0) {
             int start = (userInput.length / 2);
-            int[] q1Arr = Arrays.copyOfRange(userInput, start, userInput.length);
-            return median(q1Arr);
+            //Grab numbers in second half
+            int[] q3Arr = Arrays.copyOfRange(userInput, start, userInput.length);
+            return median(q3Arr);
         }
         else{
+            //execute if number of elements are odd
             int start = (userInput.length / 2) + 1;
+            //Grab numbers in second half
             int[] q3Arr = Arrays.copyOfRange(userInput, start, userInput.length);
             return median(q3Arr);
         }
