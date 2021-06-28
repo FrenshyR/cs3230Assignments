@@ -1,5 +1,4 @@
 package com.github.frenshyr.cs3230;
-
 import java.util.Scanner;
 
 public class Cli {
@@ -14,14 +13,10 @@ public class Cli {
         //Store numbers
         return stringArrayToIntArray(getUserInput().split("\\s+"));
     }
-     static String[] updateString() {
+    static String[] updateString() {
         //Prompt user
         System.out.println("Enter a list of words(space separated): ");
         return getUserInput().split("\\s+");
-    }
-    static boolean exit(){
-        System.out.println("Good Bye!");
-        return false;
     }
     private static int[] stringArrayToIntArray(String[] inputString) {
         int[] inputInts = new int[inputString.length];
@@ -36,12 +31,40 @@ public class Cli {
         }
         return inputInts;
     }
+    static void mainMenu(){
+        System.out.println("Welcome to My CS3230 Project!");
+        while (true){
+            System.out.println("Choose an option:");
+            System.out.println("1: Math Operations");
+            System.out.println("2: String Operations");
+            System.out.println("3: Exit");
+            Scanner in = new Scanner(System.in);
+            int option = in.nextInt();
+            //If option is outbound prompt user to try again
+            if(option > 3){
+                System.out.println("Please enter option from 1-3");
+                option = in.nextInt();
+            }
+            switch (option) {
+                //Go to Math Operations
+                case 1 -> startCliNum();
+                //Go to String Operations
+                case 2 -> startCliStr();
+                //End program
+                case 3 -> {
+                    in.close();
+                    System.out.println("Goodbye!");
+                    System.exit(0);
+                }
+            }
+        }
+    }
     static void startCliNum() {
-        boolean runProgram = true;
         //Prompt and store integers
         int[] ints = updateNumber();
         //Run program until user decides otherwise
-        while(runProgram){
+        while(true){
+            System.out.println("Math Operations");
             System.out.println("Choose an Operation:");
             System.out.println("1: Sum - sum the integers");
             System.out.println("2: Evens - find all even numbers");
@@ -52,12 +75,12 @@ public class Cli {
             System.out.println("7: Standard Deviation - find the standard deviation");
             System.out.println("8: 5 Number Summary - find min. max, media, Q1 and Q3");
             System.out.println("9: Update - enter a new list of integers");
-            System.out.println("10: Exit");
+            System.out.println("10: Return to Main Menu");
             Scanner in = new Scanner(System.in);
             int option = in.nextInt();
             //If option is outbound prompt user to try again
-            if(option >= 10){
-                System.out.println("Please enter option from 1-8");
+            if(option > 10){
+                System.out.println("Please enter option from 1-10");
                 option = in.nextInt();
             }
             switch (option) {
@@ -80,17 +103,39 @@ public class Cli {
                 //Update numbers
                 case 9 -> ints = updateNumber();
                 //Exit program
-                case 10 -> {
-                    runProgram = exit();
-                    in.close();
+                case 10 ->{
+                    mainMenu();
                 }
             }
         }
     }
     static void startCliStr() {
-        boolean runProgram = true;
         //Prompt and store words
         String[] words = updateString();
-        StringOperations.checkListOfStrings(words);
+        //Run program until user decides otherwise
+        while(true){
+            System.out.println("String Operations");
+            System.out.println("Choose an Operation:");
+            System.out.println("1: Palindrome - check if words are palindromes");
+            System.out.println("2: Update - enter a new list of words");
+            System.out.println("3: Return to Main Menu");
+            Scanner in = new Scanner(System.in);
+            int option = in.nextInt();
+            //If option is outbound prompt user to try again
+            if(option > 3){
+                System.out.println("Please enter option from 1-3");
+                option = in.nextInt();
+            }
+            switch (option) {
+                //Check list for palindromes
+                case 1 -> StringOperations.checkListOfStrings(words);
+                //Update words
+                case 2 -> words = updateString();
+                //Exit program
+                case 3 -> {
+                    mainMenu();
+                }
+            }
+        }
     }
 }
