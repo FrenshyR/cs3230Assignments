@@ -19,9 +19,9 @@ public class MathGui {
     private JButton returnToMainMenuButton;
     private JPanel heading;
     private JPanel body;
-    private JTextField textFieldInts;
+    public JTextField textFieldInts;
     private JButton submitIntsButton;
-    private JLabel messageLabel;
+    public JLabel messageLabel;
     private JTextArea outputText;
     private int[] ints;
 
@@ -30,9 +30,20 @@ public class MathGui {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String  messageToDisplay = "";
-                ints = stringToIntArray();
-                messageToDisplay = Arrays.toString(ints);
-                outputText.setText(messageToDisplay);
+                ints = Utilities.stringToIntArray(textFieldInts.getText());
+
+                //Check if input is valid
+                if(Utilities.validInts) {
+                    messageToDisplay = Arrays.toString(ints);
+                    outputText.setText(messageToDisplay);
+                }
+                else {
+                    textFieldInts.setText("");
+                    messageLabel.setText("Invalid input, please try again");
+                    outputText.setText("");
+                    ints = null;
+                }
+                Utilities.validInts = true;
             }
         });
         sumButton.addActionListener(new ActionListener() {
@@ -110,7 +121,7 @@ public class MathGui {
             public void actionPerformed(ActionEvent actionEvent) {
                 String  output = "";
                 output = "Integers: " + Arrays.toString(ints) + "\n";
-                output += fns(ints);
+                output += Utilities.fns(ints);
                 textFieldInts.setText("");
                 outputText.setText(output);
             }
@@ -125,28 +136,5 @@ public class MathGui {
             }
         });
     }
-    private int[] stringToIntArray() {
-        String[] input = textFieldInts.getText().split("\\s+");
-        int[] inputInts = new int[input.length];
-        for(int i=0; i<input.length; i++){
-            try{
-                inputInts[i] = Integer.parseInt(input[i]);
-            }
-            //If users inputs anything besides an integer
-            catch(NumberFormatException ex){
-                textFieldInts.setText("");
-                messageLabel.setText("Invalid integer, try again");
-            }
-        }
-        return inputInts;
-    }
-    private static String fns(int[] userInput){
-        String fns = "Five number summary: \n";
-        fns += "Min: " + NumberOperations.min(userInput) + "    ";
-        fns += "Max: " + NumberOperations.max(userInput) + "\n";
-        fns += "Median: " + NumberOperations.median(userInput) + "\n";
-        fns += "Q1: " + NumberOperations.q1(userInput) + "    ";
-        fns += "Q3: " + NumberOperations.q3(userInput);
-        return fns;
-    }}
+}
 

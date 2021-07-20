@@ -4,7 +4,6 @@ import com.github.frenshyr.cs3230.StringOperations;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 public class StringGui {
     public JPanel stringPanel;
@@ -17,7 +16,7 @@ public class StringGui {
     private JLabel messageLabel;
     private JTextArea outputText;
     private String[] input;
-    private  static String words = "";
+    public static String words = "";
 
     public StringGui() {
         submitWordsButton.addActionListener(new ActionListener() {
@@ -33,7 +32,7 @@ public class StringGui {
         palindromeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String output = checkListOfStrings(input);
+                String output = Utilities.checkListOfStrings(input);
                 outputText.setText(output);
             }
         });
@@ -46,19 +45,5 @@ public class StringGui {
                 MainMenu.frame.setVisible(true);
             }
         });
-    }
-    static String checkListOfStrings(String[] input){
-        //check every word in array
-        String str = "Words: " + words + "\n";
-        for (int i = 0; i < input.length; i++) {
-            //Check for palindrome
-            if(StringOperations.isPalindrome(input[i])){
-                str += input[i] + ": is a palindrome\n";
-            }
-            else {
-                str += input[i] + ": is NOT a palindrome\n";
-            }
-        }
-        return str;
     }
 }

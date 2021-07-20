@@ -6,16 +6,9 @@ import java.awt.event.ActionListener;
 
 public class MainMenu {
     public JPanel rootPanel;
-    private JButton mathOperationsButton;
-    private JButton stringOperationsButton;
+    public  JButton mathOperationsButton;
+    public  JButton stringOperationsButton;
     public static JFrame frame =new JFrame("CS3230 Project");
-
-    public static void main(String[] args) {
-        frame.setContentPane(new MainMenu().rootPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     public MainMenu() {
         mathOperationsButton.addActionListener(new ActionListener() {
@@ -35,6 +28,5 @@ public class MainMenu {
             }
         });
     }
-
 }
 
