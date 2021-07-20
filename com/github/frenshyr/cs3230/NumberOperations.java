@@ -11,7 +11,7 @@ public class NumberOperations {
         value = value / Math.pow(10, decimalPoint);
         return value;
     }
-    static Integer sum(int[] userInput) {
+    public static Integer sum(int[] userInput) {
         int sumTotal = 0;
         //Add all numbers from array into sumTotal
         for (int i=0; i<userInput.length; i++) {
@@ -19,7 +19,7 @@ public class NumberOperations {
         }
         return sumTotal;
     }
-    static ArrayList<Integer> evens(int[] userInput) {
+    public static ArrayList<Integer> evens(int[] userInput) {
         ArrayList<Integer> evens = new ArrayList<Integer>();
         //Find every even number
         for(int i=0; i<userInput.length; i++) {
@@ -30,7 +30,7 @@ public class NumberOperations {
         Collections.sort(evens);
         return evens;
     }
-    static ArrayList<Integer> odds(int[] userInput) {
+    public static ArrayList<Integer> odds(int[] userInput) {
         ArrayList<Integer> odds = new ArrayList<Integer>();
         //Find every odd number
         for(int i=0; i<userInput.length; i++){
@@ -41,23 +41,23 @@ public class NumberOperations {
         Collections.sort(odds);
         return odds;
     }
-    static int max(int[] userInput){
+    public static Integer max(int[] userInput){
         Arrays.sort(userInput);
         //Return number with max value
         return userInput[userInput.length-1];
     }
-    static int min(int[] userInput){
+    public static Integer min(int[] userInput){
         Arrays.sort(userInput);
         //Return number with the min value
         return userInput[0];
     }
-    static double mean(int[] userInput){
+    public static double mean(int[] userInput){
         //Number of elements in array
         double count = userInput.length;
         double sum = (double)sum(userInput);
         return change(sum/count, 4);
     }
-    static double std(int[] userInput){
+    public static double std(int[] userInput){
         double sum = 0;
         double sumDivide = 0;
         //Standard deviation equation
@@ -67,7 +67,7 @@ public class NumberOperations {
         sumDivide = sum / (double)userInput.length;
         return change(Math.sqrt(sumDivide), 4);
     }
-    static double median(int[] userInput) {
+    public static double median(int[] userInput) {
         double median = 0;
         Arrays.sort(userInput);
         //Execute if number of elements are even
@@ -97,14 +97,14 @@ public class NumberOperations {
         }
         return median;
     }
-    static double q1(int[] userInput){
+    public static double q1(int[] userInput){
         Arrays.sort(userInput);
         int midpoint = (userInput.length / 2);
         //Grab first half of numbers
         int[] q1Arr = Arrays.copyOfRange(userInput, 0,midpoint);
         return median(q1Arr);
     }
-    static double q3(int[] userInput){
+    public static double q3(int[] userInput){
         Arrays.sort(userInput);
         //Execute if number of elements are even
         if (userInput.length % 2 == 0) {
@@ -121,7 +121,7 @@ public class NumberOperations {
             return median(q3Arr);
         }
     }
-    static void fiveNumSummary(int[] userInput){
+    public static void fiveNumSummary(int[] userInput){
         System.out.println("Five number summary:");
         System.out.println("Min: " + min(userInput));
         System.out.println("Max: " + max(userInput));
