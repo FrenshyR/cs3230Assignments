@@ -12,7 +12,7 @@ public class StringOperations {
             }
         }
     }
-    static boolean isPalindrome(String currWord) {
+    public static boolean isPalindrome(String currWord) {
         //Pointers pointing to the start and end character in word
         int i = 0, j = currWord.length() - 1;
         //Check all characters

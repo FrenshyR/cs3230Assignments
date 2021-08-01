@@ -73,7 +73,7 @@ public class Cli {
             System.out.println("5: Min - find the min");
             System.out.println("6: Mean - find the mean");
             System.out.println("7: Standard Deviation - find the standard deviation");
-            System.out.println("8: 5 Number Summary - find min. max, media, Q1 and Q3");
+            System.out.println("8: 5 Number Summary - find min. max, median, Q1 and Q3");
             System.out.println("9: Update - enter a new list of integers");
             System.out.println("10: Return to Main Menu");
             Scanner in = new Scanner(System.in);
@@ -104,7 +104,7 @@ public class Cli {
                 case 9 -> ints = updateNumber();
                 //Exit program
                 case 10 ->{
-                    mainMenu();
+                    return;
                 }
             }
         }
@@ -133,7 +133,7 @@ public class Cli {
                 case 2 -> words = updateString();
                 //Exit program
                 case 3 -> {
-                    mainMenu();
+                    return;
                 }
             }
         }
