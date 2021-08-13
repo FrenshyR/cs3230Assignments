@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu {
+public class MainGui {
     public JPanel rootPanel;
     public  JButton mathOperationsButton;
     public  JButton stringOperationsButton;
     public static JFrame frame =new JFrame("CS3230 Project");
 
-    public MainMenu() {
+    public MainGui() {
         mathOperationsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
