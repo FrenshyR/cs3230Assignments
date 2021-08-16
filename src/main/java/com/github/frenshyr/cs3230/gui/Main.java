@@ -1,2 +1,9 @@
-package com.github.frenshyr.cs3230.gui;public class Main {
+package com.github.frenshyr.cs3230.gui;
+
+import javax.swing.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Utilities.startGui();
+    }
 }

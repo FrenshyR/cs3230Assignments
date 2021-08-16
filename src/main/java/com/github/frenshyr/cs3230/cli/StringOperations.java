@@ -1,4 +1,4 @@
-package com.github.frenshyr.cs3230;
+package com.github.frenshyr.cs3230.cli;
 
 public class StringOperations {
     static void checkListOfStrings(String[] userInput){

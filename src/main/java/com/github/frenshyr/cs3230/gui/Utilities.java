@@ -1,18 +1,13 @@
 package com.github.frenshyr.cs3230.gui;
 
-import com.github.frenshyr.cs3230.NumberOperations;
-import com.github.frenshyr.cs3230.StringOperations;
+import com.github.frenshyr.cs3230.cli.NumberOperations;
+import com.github.frenshyr.cs3230.cli.StringOperations;
+
 import javax.swing.*;
 
 public class Utilities {
     public static boolean validInts = true;
 
-    public static void main(String[] args) {
-        MainMenu.frame.setContentPane(new MainMenu().rootPanel);
-        MainMenu.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainMenu.frame.pack();
-        MainMenu.frame.setVisible(true);
-    }
     public static int[] stringToIntArray(String str) {
         String[] input = str.split("\\s+");
         int[] inputInts = new int[input.length];
@@ -49,5 +44,19 @@ public class Utilities {
             }
         }
         return str;
+    }
+    public static void startGui(){
+        MainGui.frame.setContentPane(new MainGui().rootPanel);
+        MainGui.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MainGui.frame.pack();
+        MainGui.frame.setVisible(true);
+    }
+    //Decimal trimmer
+    public static double change(double value, int decimalPoint)
+    {
+        value = value * Math.pow(10, decimalPoint);
+        value = Math.floor(value);
+        value = value / Math.pow(10, decimalPoint);
+        return value;
     }
 }
