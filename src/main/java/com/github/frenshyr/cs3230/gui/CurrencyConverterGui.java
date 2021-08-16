@@ -1,7 +1,6 @@
 package com.github.frenshyr.cs3230.gui;
 
 import com.github.frenshyr.cs3230.models.CurrencyConverter;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

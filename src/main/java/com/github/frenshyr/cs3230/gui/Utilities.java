@@ -45,6 +45,7 @@ public class Utilities {
         }
         return str;
     }
+    //Starts Gui
     public static void startGui(){
         MainGui.frame.setContentPane(new MainGui().rootPanel);
         MainGui.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
