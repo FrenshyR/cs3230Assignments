@@ -1,5 +1,4 @@
 package com.github.frenshyr.cs3230.gui;
-import com.github.frenshyr.cs3230.StringOperations;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -39,10 +38,9 @@ public class StringGui {
         returnToMainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                MainMenu.frame.setContentPane(new MainMenu().rootPanel);
-                MainMenu.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                //frame.pack();
-                MainMenu.frame.setVisible(true);
+                MainGui.frame.setContentPane(new MainGui().rootPanel);
+                MainGui.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                MainGui.frame.setVisible(true);
             }
         });
     }
